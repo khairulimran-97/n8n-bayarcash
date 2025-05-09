@@ -1,46 +1,80 @@
-![Banner image](https://user-images.githubusercontent.com/10284570/173569848-c624317f-42b1-45a6-ab09-f0ea3c247648.png)
+# Bayarcash Node for n8n
 
-# n8n-nodes-starter
+An n8n community node to integrate with Bayarcash payment processing API directly in your workflows.
 
-This repo contains example nodes to help you get started building your own custom integrations for [n8n](n8n.io). It includes the node linter and other dependencies.
+This node enables easy access to Bayarcash payment gateway services in Malaysia and Southeast Asia, including FPX, DuitNow, QRIS, and other regional payment methods.
 
-To make your custom node available to the community, you must create it as an npm package, and [submit it to the npm registry](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry).
+[N8n community nodes documentation](https://docs.n8n.io/integrations/community-nodes/installation/
 
 ## Prerequisites
 
-You need the following installed on your development machine:
+- n8n v0.160.0 or newer
+- Bayarcash account with API access
+- Personal Access Token (PAT) from Bayarcash console
 
-* [git](https://git-scm.com/downloads)
-* Node.js and pnpm. Minimum version Node 18. You can find instructions on how to install both using nvm (Node Version Manager) for Linux, Mac, and WSL [here](https://github.com/nvm-sh/nvm). For Windows users, refer to Microsoft's guide to [Install NodeJS on Windows](https://docs.microsoft.com/en-us/windows/dev-environment/javascript/nodejs-on-windows).
-* Install n8n with:
-  ```
-  pnpm install n8n -g
-  ```
-* Recommended: follow n8n's guide to [set up your development environment](https://docs.n8n.io/integrations/creating-nodes/build/node-development-environment/).
+## Credentials
 
-## Using this starter
+The node uses API Token authentication:
 
-These are the basic steps for working with the starter. For detailed guidance on creating and publishing nodes, refer to the [documentation](https://docs.n8n.io/integrations/creating-nodes/).
+- **PAT Token**: Your Personal Access Token from Bayarcash
+- **API URL**: Base URL for the Bayarcash API (defaults to `https://api.console.bayar.cash/v3`)
 
-1. [Generate a new repository](https://github.com/n8n-io/n8n-nodes-starter/generate) from this template repository.
-2. Clone your new repo:
-   ```
-   git clone https://github.com/<your organization>/<your-repo-name>.git
-   ```
-3. Run `pnpm i` to install dependencies.
-4. Open the project in your editor.
-5. Browse the examples in `/nodes` and `/credentials`. Modify the examples, or replace them with your own nodes.
-6. Update the `package.json` to match your details.
-7. Run `pnpm lint` to check for errors or `pnpm lintfix` to automatically fix errors when possible.
-8. Test your node locally. Refer to [Run your node locally](https://docs.n8n.io/integrations/creating-nodes/test/run-node-locally/) for guidance.
-9. Replace this README with documentation for your node. Use the [README_TEMPLATE](README_TEMPLATE.md) to get started.
-10. Update the LICENSE file to use your details.
-11. [Publish](https://docs.npmjs.com/packages-and-modules/contributing-packages-to-the-registry) your package to npm.
+## Node Reference
 
-## More information
+### Payment Intent
 
-Refer to our [documentation on creating nodes](https://docs.n8n.io/integrations/creating-nodes/) for detailed information on building your own nodes.
+| Operation | Description |
+|-----------|-------------|
+| Create | Create a new payment intent |
+| Get Status | Check status of an existing payment intent (v3) |
+| Delete | Delete a payment intent (v3) |
 
-## License
+### Portal
 
-[MIT](https://github.com/n8n-io/n8n-nodes-starter/blob/master/LICENSE.md)
+| Operation | Description |
+|-----------|-------------|
+| List All Portals | Get a list of all available portals |
+| Get Portal Channels | Get payment channels for a specific portal |
+
+### Transaction
+
+| Operation | Description |
+|-----------|-------------|
+| Get Transaction by ID | Retrieve transaction details (v3) |
+| List Transactions | Get filtered transaction data (v3) |
+
+## Supported Payment Channels
+
+- FPX (Financial Process Exchange)
+- FPX Line of Credit
+- DuitNow Online Banking/Wallets
+- DuitNow QR
+- Boost PayFlex (BNPL)
+- QRIS Indonesia Online Banking
+- QRIS Indonesia eWallet
+- NETS Singapore
+
+## Example Usage
+
+### Create Payment Intent
+
+```
+[Bayarcash] -> [HTTP Request]
+               |
+               v
+          [Send Email]
+```
+
+### Process Transaction Webhook
+
+```
+[Webhook] -> [Bayarcash: Get Transaction by ID]
+              |
+              v
+        [Update Database]
+```
+
+## Resources
+
+- [Bayarcash API Documentation](https://api.webimpian.support/bayarcash)
+- [Report Issues](https://github.com/username/n8n-nodes-bayarcash/issues)

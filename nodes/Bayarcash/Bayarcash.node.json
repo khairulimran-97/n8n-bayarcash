@@ -1,0 +1,21 @@
+{
+	"node": "n8n-nodes-base.Bayarcash",
+	"nodeVersion": "1.0",
+	"codexVersion": "1.0",
+	"categories": [
+		"Finance",
+		"Payment"
+	],
+	"resources": {
+		"credentialDocumentation": [
+			{
+				"url": "https://api.webimpian.support/bayarcash"
+			}
+		],
+		"primaryDocumentation": [
+			{
+				"url": "https://api.webimpian.support/bayarcash"
+			}
+		]
+	}
+}

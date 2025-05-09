@@ -1,19 +1,19 @@
 {
-  "name": "n8n-nodes-<...>",
-  "version": "0.1.0",
-  "description": "",
+  "name": "n8n-nodes-bayarcash",
+  "version": "0.1.2",
+  "description": "Bayarcash Node for N8N",
   "keywords": [
     "n8n-community-node-package"
   ],
   "license": "MIT",
-  "homepage": "",
+  "homepage": "https://bayarcash.com",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Bayarcash Sdn Bhd",
+    "email": "hai@webimpian.com"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/<...>/n8n-nodes-<...>.git"
+    "url": "git+https://github.com/khairulimran-97/n8n-bayarcash.git"
   },
   "engines": {
     "node": ">=18.10",
@@ -36,12 +36,10 @@
   "n8n": {
     "n8nNodesApiVersion": 1,
     "credentials": [
-      "dist/credentials/ExampleCredentialsApi.credentials.js",
-      "dist/credentials/HttpBinApi.credentials.js"
+      "dist/credentials/BayarcashApi.credentials.js"
     ],
     "nodes": [
-      "dist/nodes/ExampleNode/ExampleNode.node.js",
-      "dist/nodes/HttpBin/HttpBin.node.js"
+      "dist/nodes/Bayarcash/Bayarcash.node.js"
     ]
   },
   "devDependencies": {
@@ -54,5 +52,14 @@
   },
   "peerDependencies": {
     "n8n-workflow": "*"
+  },
+  "dependencies": {
+    "eslint-config-riot": "^1.0.0",
+    "eslint-scope": "^7.2.2",
+    "eslint-visitor-keys": "^3.4.3",
+    "n8n-workflow": "^1.48.0"
+  },
+  "bugs": {
+    "url": "https://github.com/khairulimran-97/n8n-bayarcash/issues"
   }
 }
